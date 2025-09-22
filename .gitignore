@@ -5,11 +5,19 @@
 /tmp
 /out-tsc
 /bazel-out
+.angular/
 
 # Node
 /node_modules
 npm-debug.log
 yarn-error.log
+package-lock.json
+pnpm-lock.yaml
+
+# Firebase Hosting
+.firebase/
+.firebase-project-config.json
+hosting.*
 
 # IDEs and editors
 .idea/
@@ -19,6 +27,9 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+
+# Environment files (optional, if you store secrets locally)
+src/environments/environment*.ts
 
 # Visual Studio Code
 .vscode/*
@@ -40,3 +51,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
