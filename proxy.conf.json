@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "https://studio--studio-9761992685-e3ea1.us-central1.hosted.app",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

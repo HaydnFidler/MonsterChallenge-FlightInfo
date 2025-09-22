@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.monster-btn {
+    background-color:#2e8b57;
+    color:#ffffff;
+    padding:14px 28px;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+    display:inline-block;
+    max-width:90%;
+    text-align:center;
+}
+
+.completion-body {
+    color: #898989;
+    font-size: clamp(0.5rem, 3vw, 1.5rem);
+}
+
+.completion-small {
+    color: #898989;
+}

@@ -1,0 +1,153 @@
+<!-- Content Overlay -->
+<div class="d-flex align-items-center justify-content-center px-3" style="min-height: 100%;">
+  <!-- White Box with Green Text -->
+  <div class="bg-white rounded shadow p-5 mx-auto border border-4 border-white" style="max-width: 42rem;">
+    <form [formGroup]="formFlightInfo" (ngSubmit)="submitForm($event)">
+      <div class="text-center">
+        <h1 class="text-success display-4 mb-4" style="letter-spacing: 0.05em; font-size: clamp(1.5rem, 4vw, 3rem);">
+          {{welcomePhrase()}}
+        </h1>
+
+        @if (auth.devFlags.showTestDataFillButton) {
+          <div>
+            <button
+              type="button"
+              (click)="onTestDataClick($event)"
+              >
+                Fill with test data
+            </button>
+          </div>
+        }
+        
+        <!-- Date Input Section -->
+        <div class="mb-4 mx-auto" style="max-width: 28rem;">
+          <label
+            for="arrivalDate"
+            class="form-label text-start d-block text-muted"
+          >
+            What date will you arrive?
+          </label>
+          <input
+            id="arrivalDate"
+            type="date"
+            class="form-control w-100"
+            formControlName="arrivalDate"
+          />
+          @if (shouldShowRequiredError('arrivalDate')) {
+            <small class="text-danger text-start d-block">This field is required</small>
+          }
+        </div>
+
+        <!-- Airline Input Section -->
+        <div class="mb-4 mx-auto" style="max-width: 28rem;">
+          <label
+            for="airlineName"
+            class="form-label text-start d-block text-muted"
+          >
+            Which airline will you arrive with?
+          </label>
+          <input
+            id="airlineName"
+            type="text"
+            class="form-control w-100"
+            formControlName="airlineName"
+          />
+          @if (shouldShowRequiredError('airlineName')) {
+            <small class="text-danger text-start d-block">This field is required</small>
+          }
+        </div>
+
+        <!-- Flight number Input Section -->
+        <div class="mb-4 mx-auto" style="max-width: 28rem;">
+          <label
+            for="arrival-flight-number"
+            class="form-label text-start d-block text-muted"
+          >
+            What will your flight number be?
+          </label>
+          <input
+            id="arrival-flight-number"
+            type="text"
+            class="form-control w-100"
+            formControlName="flightNumber"
+          />
+          @if (shouldShowRequiredError('flightNumber')) {
+            <small class="text-danger text-start d-block">This field is required</small>
+          }
+        </div>
+
+        <!-- Arrival time Input Section -->
+        <div class="mb-4 mx-auto" style="max-width: 28rem;">
+          <label
+            for="arrival-time"
+            class="form-label text-start d-block text-muted"
+          >
+            What time is your flight due to arrive?
+          </label>
+          <input
+            id="arrival-time"
+            type="time"
+            class="form-control w-100"
+            formControlName="arrivalTime"
+          />
+          @if (shouldShowRequiredError('arrivalTime')) {
+            <small class="text-danger text-start d-block">This field is required</small>
+          }
+        </div>
+
+        <!-- Number of guests Input Section -->
+        <div class="mb-4 mx-auto" style="max-width: 28rem;">
+          <label
+            for="number-of-guests"
+            class="form-label text-start d-block text-muted"
+          >
+            How many guests will there be?
+          </label>
+          <input
+            id="number-of-guests"
+            type="number"
+            min="1"
+            class="form-control w-100"
+            formControlName="guestCount"
+          />
+          @if (shouldShowRequiredError('guestCount')) {
+            <small class="text-danger text-start d-block">This field is required</small>
+          }
+          @if (shouldShowMinError('guestCount')) {
+            <small class="text-danger text-start d-block">At least one guest must be comming</small>
+          }
+        </div>
+
+        <!-- Additional comments Input Section -->
+        <div class="mb-4 mx-auto" style="max-width: 28rem;">
+          <label
+            for="comments"
+            class="form-label text-start d-block text-muted"
+          >
+            Is there anything else you want to tell us? (optional)
+          </label>
+          <textarea
+            id="comments"
+            type="text"
+            class="form-control w-100"
+            rows="3"
+            formControlName="comments"
+          ></textarea>
+        </div>
+
+        <div class="mb-4">
+          <button
+            type="submit"
+            class="monster-btn" 
+            [disabled]="formFlightInfo.invalid || isSubmitting"
+          >
+          @if (isSubmitting) {
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+          }
+            {{isSubmitting ? 'Submitting...' : 'Submit'}}
+        </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

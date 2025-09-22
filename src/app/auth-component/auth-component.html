@@ -1,0 +1,81 @@
+<!-- Content Overlay -->
+<div class="d-flex align-items-center justify-content-center px-3" style="min-height: 100%;">
+  <!-- White Box with Green Text -->
+  <div class="bg-white rounded shadow p-5 mx-auto border border-4 border-white" style="max-width: 42rem;">
+    <div class="text-center">
+    <h1 class="text-success display-4 mb-4" style="letter-spacing: 0.05em; font-size: clamp(1.5rem, 4vw, 3rem);">
+        We're looking forward to seeing you!
+    </h1>
+    
+    <form [formGroup]="formAuth" (ngSubmit)="submitForm($event)">
+
+        <!-- Email Input Section -->
+        <div class="mb-4 mx-auto" style="max-width: 28rem;">
+          <label
+            for="emailAddress"
+            class="form-label text-start d-block text-muted"
+          >
+            Email
+          </label>
+          <input
+            id="emailAddress"
+            type="text"
+            class="form-control w-100"
+            formControlName="emailAddress"
+          />
+          @if (shouldShowRequiredError('emailAddress')) {
+            <small class="text-danger text-start d-block">This field is required</small>
+          } 
+          @if (shouldShowEmailError('emailAddress')) {
+            <small class="text-danger text-start d-block">Your email is required</small>
+          }
+        </div>
+
+        <!-- Password Input Section -->
+        <div class="mb-4 mx-auto" style="max-width: 28rem;">
+          <label
+            for="password"
+            class="form-label text-start d-block text-muted"
+          >
+            Password
+          </label>
+          <div class="position-relative">
+            <input
+              id="password"
+              [type]="showPassword ? 'text' : 'password'"
+              class="form-control w-100"
+              formControlName="password"
+            />
+            <button
+              type="button"
+              class="btn position-absolute top-50 end-0 translate-middle-y border-0 bg-transparent"
+              (click)="togglePasswordVisibility()"
+              style="z-index: 10;"
+            >
+            @if (!showPassword) {
+              <i class="bi bi-eye"></i>
+            }
+            @else {
+              <i class="bi bi-eye-slash"></i>
+            }
+            </button>
+          </div>
+          @if (shouldShowRequiredError('password')) {
+            <small class="text-danger text-start d-block">This field is required</small>
+          }
+        </div>
+
+        <div class="mb-4">
+          <button
+            type="submit"
+            class="monster-btn"
+            [disabled]="formAuth.invalid || isLoading"
+          >
+          @if (isLoading) {
+            <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+          }
+            {{isLoading ? 'Logging in...' : 'Log in'}}
+          </button>
+        </div>
+    </form>
+</div>

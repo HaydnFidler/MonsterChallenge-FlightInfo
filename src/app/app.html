@@ -1,0 +1,59 @@
+<div class="min-vh-100 bg-white">
+  <!-- Header with Search -->
+  <header class="position-relative">
+    <div class="position-fixed top-0 start-0 end-0 bg-white shadow-sm d-flex justify-content-between align-items-center py-2 px-4" style="z-index: 20;">
+      <!-- Logo -->
+      <div class="d-flex align-items-center">
+        <img
+          src="https://monsterrg.com/wp-content/uploads/2021/08/MonsterLogo-secondary.png"
+          alt="Reservations Club Logo"
+          class="object-fit-contain"
+          style="width: 4rem; height: 4rem;"
+        />
+      </div>
+
+      @if (!auth.devFlags.isProductionMode) {
+        <!-- Optional development message -->
+        <nav class="d-none d-lg-flex align-items-center">
+          
+            <!-- Show that we have (at least some) development flags active-->
+            <p style="color: #28a745; font-size: large;">*** Dev Mode ***</p>
+          
+        </nav>
+      }
+
+      <!-- Search bar -->
+      <div class="flex-grow-1 ms-2 ms-md-3">
+        <input
+          #searchInput
+          type="text"
+          placeholder="Search..."
+          class="form-control px-2 px-md-3 py-2 bg-light text-muted border border-secondary rounded w-100"
+          style="border-color: #28a745 !important; box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important; max-width: 200px; margin-left: auto; min-width: 50px;"
+          (keydown.enter)="onSearch(searchInput.value)"
+        />
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Full Width Image -->
+  <section class="position-relative vh-100 w-100" style="padding-top: 80px;">
+    <!-- Background Image -->
+    <div class="position-absolute top-0 start-0 end-0 bottom-0">
+      <img
+        src="https://images.unsplash.com/photo-1582719508461-905c673771fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cm9waWNhbCUyMHBvb2wlMjBzdW5zZXQlMjB2YWNhdGlvbnxlbnwxfHx8fDE3NTc3ODE3MzR8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+        alt="Tropical vacation scene with pool at sunset"
+        class="w-100 h-100 object-fit-cover"
+      />
+      <!-- Overlay for better text contrast -->
+      <div class="position-absolute top-0 start-0 end-0 bottom-0" style="background-color: rgba(0, 0, 0, 0.2);"></div>
+    </div>
+
+    <!-- Router content overlay -->
+    <div class="position-absolute top-0 start-0 end-0 bottom-0" style="z-index: 10; padding-top: 90px; padding-bottom: 10px; overflow-y: auto;">
+      <router-outlet />
+    </div>
+  </section>
+</div>
+
+
